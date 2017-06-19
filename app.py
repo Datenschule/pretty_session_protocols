@@ -30,6 +30,24 @@ def nl2br(eval_ctx, value):
         result = Markup(result)
     return result
 
+
+@app.template_filter()
+@evalcontextfilter
+def poiemoji(eval_ctx, text):
+    result = []
+    if 'Beifall' in text:
+        result.append("👏")
+    elif "Heiterkeit" in text:
+        result.append("😂")
+    elif "Unterbrechung" in text:
+        result.append("⏰")
+    else:
+        result.append("🗯")
+    result = " ".join(result)
+    if eval_ctx.autoescape:
+        result = Markup(result)
+    return result
+
 if __name__ == "__main__":
     app.debug = True
     app.run()

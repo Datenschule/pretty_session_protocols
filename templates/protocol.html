@@ -22,12 +22,7 @@
             </div>
         {% elif row['type'] == 'poi' %}
             <div class="poi" id="{{row['sequence']}}">
-                {{ "👏" if 'Beifall' in row['text'] }}
-                {{ "😂" if 'Heiterkeit' in row['text'] }}
-
-                {% if 'Beifall' not in row['text'] and 'Heiterkeit' not in row['text'] %}
-                🗯
-                {% endif %}
+                {{ row['text'] | poiemoji }}
 
                 {{ row['text'] }}
 
