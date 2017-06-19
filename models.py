@@ -24,6 +24,7 @@ class Utterance(db.Model):
     def get_all(wahlperiode, session):
         return db.session.query(Utterance)\
                          .filter(Utterance.sitzung == session) \
+                         .filter(Utterance.wahlperiode == wahlperiode) \
                          .order_by(Utterance.sequence) \
                          .all()
 
