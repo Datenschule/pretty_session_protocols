@@ -34,7 +34,8 @@ body {
 }
 
 .main {
-    width: 70ch;
+    width: 50ch;
+    line-height: 1.4em;
     margin: 0 auto;
 }
 
