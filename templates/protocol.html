@@ -29,22 +29,19 @@
                 🗯
                 {% endif %}
 
-                    {{ row['text'] }}
+                {{ row['text'] }}
 
-                    {% if row['speaker_cleaned'] %}
-                        (
-                            {{row['speaker_cleaned']}}
-                            {% if row['speaker_party'] %}
-                            <span class="poi-party"><img src="{{ url_for('static', filename=row['speaker_party'] + '.svg') }}"/></span>
-                            {% endif %}
-                        )
-                    {% endif %}
-                    <a class="jumpmark" href="#{{row['sequence']}}">🔗</a>
-                    </div>
-
+                {% if row['speaker_cleaned'] %}
+                    (
+                        {{row['speaker_cleaned']}}
+                        {% if row['speaker_party'] %}
+                        <span class="poi-party"><img src="{{ url_for('static', filename=row['speaker_party'] + '.svg') }}"/></span>
+                        {% endif %}
+                    )
+                {% endif %}
+                <a class="jumpmark" href="#{{row['sequence']}}">🔗</a>
             </div>
         {% endif %}
-
         {% endfor %}
     </div>
 </body>

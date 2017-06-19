@@ -6,7 +6,6 @@ body {
     font-weight: bold;
 }
 
-
 .poi {
     text-decoration: italic;
     color: gray;
@@ -32,4 +31,9 @@ body {
 
 .party img{
     height: 1em;
+}
+
+.main {
+    width: 70ch;
+    margin: 0 auto;
 }
