@@ -37,3 +37,7 @@ body {
     width: 70ch;
     margin: 0 auto;
 }
+
+div:target {
+    background-color: rgba(255, 255, 191, 0.44);
+}
