@@ -18,7 +18,7 @@
                 {% endif %}
                 <a class="jumpmark" href="#{{row['sequence']}}">🔗</a>
             </div>
-            <div class="text">{{row['text']}}</div>
+            <div class="text">{{row['text'] | nl2br}}</div>
         </div>
     {% elif row['type'] == 'poi' %}
         <div class="poi" id="{{row['sequence']}}">
