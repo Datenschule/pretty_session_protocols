@@ -14,7 +14,7 @@ def protocol(session):
 
     conn.row_factory = sqlite3.Row
     c = conn.cursor()
-    data = c.execute('select sequence, speaker_cleaned, speaker_party, type, text'
+    data = c.execute('select sequence, speaker_cleaned, speaker_party, type, text '
                      'from de_bundestag_plpr '
                      'where sitzung=?;', [session])
     return render_template('protocol.html', data=data)
