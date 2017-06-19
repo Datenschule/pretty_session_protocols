@@ -8,6 +8,6 @@ pip install -r requirement.txt
 ## Running:
 
 ```bash
-DB_URL=<path to url> python app.py
-#e.g.: DB_URL=/home/user/db.sqlite python app.py
+DATABSE_URL=<db_url> python views.py
+#e.g.: DATABSE_URL=sqlite:////home/user/db.sqlite python views.py
 ```
