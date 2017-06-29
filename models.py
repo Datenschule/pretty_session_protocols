@@ -29,4 +29,4 @@ class Utterance(db.Model):
                          .all()
 
     def __repr__(self):
-        return '<Utterance %r>' % self.sitzung
+        return '<Utterance {}-{}-{}>'.format(self.wahlperiode, self.sitzung, self.sequence)
