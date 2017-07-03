@@ -10,6 +10,11 @@ def protocol(session):
     return render_template('protocol.html', data=data)
 
 
+@app.route("/")
+def index():
+    return "Placeholder", 200
+
+
 if __name__ == "__main__":
     app.debug = True
     app.run(host="0.0.0.0")
