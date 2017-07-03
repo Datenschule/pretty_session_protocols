@@ -11,6 +11,8 @@ pip install -r requirement.txt
 DATABSE_URL=<db_url> python views.py
 #e.g.: DATABSE_URL=sqlite:////home/user/db.sqlite python views.py
 ```
+You can set `DEBUG=True` before starting to enable debug mode. This is recommended for development. Do not do it
+in production though!
 
 ## Docker 
 You can run this project with docker compose. It will create a instance for the database and one for the actual app.

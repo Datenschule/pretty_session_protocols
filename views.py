@@ -1,3 +1,5 @@
+import os
+
 from flask import render_template
 
 from app import app
@@ -22,5 +24,5 @@ def index():
 
 
 if __name__ == "__main__":
-    app.debug = True
+    app.debug = os.environ.get("DEBUG", False)
     app.run(host="0.0.0.0")
