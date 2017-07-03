@@ -10,6 +10,12 @@ def protocol(session):
     return render_template('protocol.html', data=data)
 
 
+@app.route("/session/")
+def protocol_overview():
+    sessions = Utterance.get_sessions()
+    return render_template('protocol_overview.html', sessions=sessions)
+
+
 @app.route("/")
 def index():
     return "Placeholder", 200

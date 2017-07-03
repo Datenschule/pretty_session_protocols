@@ -28,5 +28,11 @@ class Utterance(db.Model):
                          .order_by(Utterance.sequence) \
                          .all()
 
+    @staticmethod
+    def get_sessions():
+        return db.session.query(Utterance.wahlperiode, Utterance.sitzung) \
+                 .distinct(Utterance.wahlperiode, Utterance.sitzung) \
+                 .all()
+
     def __repr__(self):
         return '<Utterance {}-{}-{}>'.format(self.wahlperiode, self.sitzung, self.sequence)
