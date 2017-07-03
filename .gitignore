@@ -1,2 +1,3 @@
 __pycache__/
 *.pyc
+/plpr-docker-database-data/
