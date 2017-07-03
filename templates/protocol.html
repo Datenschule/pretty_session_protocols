@@ -4,6 +4,7 @@
 </head>
 <body>
     <div class="main">
+        <h1> {{ data[0].wahlperiode }}. Wahlperiode - Sitzung {{ data[0].sitzung }}</h1>
         {% for row in data %}
         {% if row['type'] in ['speech', 'chair'] %}
             <div id="{{row['sequence']}}">
