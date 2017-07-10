@@ -25,4 +25,6 @@ def index():
 
 if __name__ == "__main__":
     app.debug = os.environ.get("DEBUG", False)
+    app.jinja_env.auto_reload = app.debug
+    app.config['TEMPLATES_AUTO_RELOAD'] = app.debug
     app.run(host="0.0.0.0")
