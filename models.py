@@ -1,3 +1,4 @@
+import itertools
 import os
 
 from flask_sqlalchemy import SQLAlchemy
@@ -31,9 +32,18 @@ class Utterance(db.Model):
 
     @staticmethod
     def get_sessions():
-        return db.session.query(Utterance.wahlperiode, Utterance.sitzung) \
-                 .distinct(Utterance.wahlperiode, Utterance.sitzung) \
+        data = db.session.query(Utterance.wahlperiode, Utterance.sitzung, Utterance.top) \
+                 .distinct(Utterance.wahlperiode, Utterance.sitzung, Utterance.top) \
                  .all()
+
+        results = []
+        for key, igroup in itertools.groupby(data, lambda x: (x.wahlperiode, x.sitzung)):
+            wahlperiode, sitzung = key
+            results.append({"session": {"wahlperiode": wahlperiode,
+                                        "sitzung": sitzung},
+                            "tops": [entry.top for entry in list(igroup) if entry.top is not None]})
+
+        return sorted(results, key=lambda entry: (entry["session"]["wahlperiode"], entry["session"]["sitzung"]))
 
     def __repr__(self):
         return '<Utterance {}-{}-{}>'.format(self.wahlperiode, self.sitzung, self.sequence)

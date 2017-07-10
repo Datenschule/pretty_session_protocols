@@ -6,7 +6,14 @@
     <div class="main">
         <ul>
         {% for session in sessions %}
-            <li><a href="{{url_for('protocol', session=session.sitzung) }}"> Wahlperiode {{ session.wahlperiode }} -  Sitzung {{ session.sitzung }} </a> </li>
+            <li>
+                <a href="{{url_for('protocol', session=session['session']['sitzung']) }}"> Wahlperiode {{ session['session']['wahlperiode'] }} -  Sitzung {{ session['session']['sitzung'] }} </a>
+                <ul>
+                    {% for top in session['tops'] %}
+                    <li><a href="{{url_for('protocol', session=session['session']['sitzung']) }}#top-{{top}}">{{top}}</a></li>
+                    {% endfor %}
+                </ul>
+            </li>
         {% endfor %}
         </ul>
     </div>
