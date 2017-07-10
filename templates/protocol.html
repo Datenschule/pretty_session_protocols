@@ -5,9 +5,17 @@
 <body>
     <div class="main">
         <h1> {{ data[0].wahlperiode }}. Wahlperiode - Sitzung {{ data[0].sitzung }}</h1>
+        {# unfortunately jinja does not support overwriting regular variables from within a loop... #}
+        {% set vars = {'last_top': ''} %}
+
         {% for row in data %}
+            {% if row.top|string() != vars.last_top|string() %}
+               {% if vars.update({'last_top': row.top}) %} {% endif %}
+                <h2>Tagesordnungspunkt {{row.top}}</h2>
+            {% endif %}
+
         {% if row['type'] in ['speech', 'chair'] %}
-            <div id="{{row['sequence']}}">
+            <div id="{{row['sequence']}}" {% if debug %} style="background-color: {{row['top'] | prcolor }}" {% endif %}>
                 <div class="speaker-info">
                     <span class="speaker">{{row['speaker_cleaned']}}</span>
                     {% if row['type'] == 'chair' %}
@@ -22,7 +30,7 @@
                 <div class="text">{{row['text'] | nl2br}}</div>
             </div>
         {% elif row['type'] == 'poi' %}
-            <div class="poi" id="{{row['sequence']}}">
+            <div class="poi" id="{{row['sequence']}}" {% if debug %} style="background-color: {{row['top'] | prcolor }}" {% endif %}>
                 {{ row['text'] | poiemoji }}
 
                 {{ row['text'] }}

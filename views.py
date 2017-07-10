@@ -1,6 +1,6 @@
 import os
 
-from flask import render_template
+from flask import render_template, request
 
 from app import app
 from models import Utterance
@@ -9,7 +9,8 @@ from models import Utterance
 @app.route("/session/<session>")
 def protocol(session):
     data = Utterance.get_all(18, session)
-    return render_template('protocol.html', data=data)
+    debug = request.args.get("debug")
+    return render_template('protocol.html', data=data, debug=debug)
 
 
 @app.route("/session/")

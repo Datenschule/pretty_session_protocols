@@ -1,4 +1,5 @@
 # -!- coding:utf-8 -!-
+import random
 import re
 
 from flask import Flask
@@ -16,6 +17,13 @@ def nl2br(eval_ctx, value):
     if eval_ctx.autoescape:
         result = Markup(result)
     return result
+
+
+@app.template_filter()
+def prcolor(value):
+    random.seed(value)
+    red, green, blue = [random.randint(0, 255) for _ in range(3)]
+    return "rgb({}, {}, {})".format(red, green, blue)
 
 
 @app.template_filter()

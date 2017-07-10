@@ -17,6 +17,7 @@ class Utterance(db.Model):
     sequence = db.Column(db.Integer)
     speaker_cleaned = db.Column(db.String)
     speaker_party = db.Column(db.String)
+    top = db.Column(db.String)
     type = db.Column(db.String)
     text = db.Column(db.String)
 
