@@ -6,7 +6,7 @@
     <div class="main">
         <h1> {{ data[0].wahlperiode }}. Wahlperiode - Sitzung {{ data[0].sitzung }}</h1>
         {# unfortunately jinja does not support overwriting regular variables from within a loop... #}
-        {% set vars = {'last_top': ''} %}
+        {% set vars = {'last_top': None} %}
 
         {% for row in data %}
             {% if row.top|string() != vars.last_top|string() %}
