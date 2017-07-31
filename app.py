@@ -42,3 +42,5 @@ def poiemoji(eval_ctx, text):
     if eval_ctx.autoescape:
         result = Markup(result)
     return result
+
+import views

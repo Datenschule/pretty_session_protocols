@@ -3,7 +3,7 @@ services:
   protocols:
     build: .
     ports:
-      - "8090:5000"
+      - "8090:8000"
     links:
       - database
     environment:
