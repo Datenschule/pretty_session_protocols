@@ -1,18 +1,52 @@
 body {
-    font-family: -apple-system, BlinkMacSystemFont, “Segoe UI”, Roboto, Helvetica, Arial, sans-serif;
+    font-family: Georgia, serif;
 }
 
 .speaker{
     font-weight: bold;
+    text-decoration: none;
+    color: black;
+}
+
+.text {
+    color: #444444;
+    line-height: 1.6em;
 }
 
 .poi {
-    text-decoration: italic;
-    color: gray;
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+}
+
+.poi div {
+  border-radius: 1.5px;
+  background-color: white;
+  padding: 1em;
+  width: 55%;
+  display: flex;
+  color: #444444;
+  font-style: italic;
+}
+
+.poi a {
+    text-decoration: none;
+    color: #444444;
+}
+
+
+/* if there is a group of pois they should have a little less margin between them. */
+.poi + .poi {
+    margin-top: -1.5em;
+}
+
+.poiemoji {
+  margin-right: 1ch;
+  font-style: normal;
 }
 
 .poi, .text {
-    margin-bottom: 1.6em;
+    margin-bottom: 3em;
 }
 
 .poi .jumpmark, .speaker-info .jumpmark{
@@ -41,4 +75,14 @@ body {
 
 div:target {
     background-color: rgba(255, 255, 191, 0.44);
+}
+
+h2 {
+    line-height: 1.2em;
+    font-size: 1.35em;
+    margin-bottom: 2em;
+}
+
+body {
+    background-color: #f6f6f6;
 }

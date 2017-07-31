@@ -11,14 +11,14 @@
         {% for row in data %}
             {% if row.top|string() != vars.last_top|string() %}
                {% if vars.update({'last_top': row.top}) %} {% endif %}
-                <h2 id="top-{{ row.top }}">Tagesordnungspunkt {{row.top}}</h2>
+                <h2 id="top-{{ row.top }}">{{row.top}}</h2>
             {% endif %}
 
         {% if row['type'] in ['speech', 'chair'] %}
             <div id="{{row['sequence']}}" {% if debug %} style="background-color: {{row['top'] | prcolor }}" {% endif %}>
                 <div class="speaker-info">
 
-                    <a class="speaker">
+                    <a class="speaker" {%if row.agw_url %} href="{{row.agw_url}}" {% endif %}>
                         {% if row['speaker_party'] %}
                             {{row['speaker_cleaned']}}
                         {% else %}
@@ -37,20 +37,26 @@
                 <div class="text">{{row['text'] | nl2br}}</div>
             </div>
         {% elif row['type'] == 'poi' %}
-            <div class="poi" id="{{row['sequence']}}" {% if debug %} style="background-color: {{row['top'] | prcolor }}" {% endif %}>
-                {{ row['text'] | poiemoji }}
+            <div class="poi"  {% if debug %} style="background-color: {{row['top'] | prcolor }}" {% endif %}>
+                <div id="{{row['sequence']}}">
+                    <span class="poiemoji">
+                        {{ row['text'] | poiemoji }}
+                    </span>
+                    <span>
+                        {{ row['text'] }}
 
-                {{ row['text'] }}
-
-                {% if row['speaker_cleaned'] %}
-                    (
-                        {{row['speaker_cleaned']}}
-                        {% if row['speaker_party'] %}
-                        <span class="poi-party"><img src="{{ url_for('static', filename=row['speaker_party'] + '.svg') }}"/></span>
+                        {% if row['speaker_cleaned'] %}
+                            (
+                                <a {%if row.agw_url %} href="{{row.agw_url}}" {% endif %} >{{row['speaker_cleaned']}}</a>
+                                {% if row['speaker_party'] %}
+                                <span class="poi-party"><img src="{{ url_for('static', filename=row['speaker_party'] + '.svg') }}"/></span>
+                                {% endif %}
+                            )
                         {% endif %}
-                    )
-                {% endif %}
-                <a class="jumpmark" href="#{{row['sequence']}}">🔗</a>
+                        <a class="jumpmark" href="#{{row['sequence']}}">🔗</a>
+                    </span>
+
+                </div>
             </div>
         {% endif %}
         {% endfor %}

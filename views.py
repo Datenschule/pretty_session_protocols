@@ -1,3 +1,4 @@
+import json
 import os
 
 from flask import render_template, request
@@ -6,9 +7,19 @@ from app import app
 from models import Utterance
 
 
+def get_mdbs():
+    dir = os.path.dirname(__file__)
+    filename = os.path.join(dir, './matches.json')
+    with open(filename) as infile:
+        return json.load(infile)
+
+
 @app.route("/session/<session>")
 def protocol(session):
     data = Utterance.get_all(18, session)
+    mdbs = get_mdbs()
+    for utterance in data:
+        utterance.agw_url = mdbs.get(utterance.speaker_fp)
     debug = request.args.get("debug")
     return render_template('protocol.html', data=data, debug=debug)
 
