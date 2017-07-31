@@ -17,7 +17,14 @@
         {% if row['type'] in ['speech', 'chair'] %}
             <div id="{{row['sequence']}}" {% if debug %} style="background-color: {{row['top'] | prcolor }}" {% endif %}>
                 <div class="speaker-info">
-                    <span class="speaker">{{row['speaker_cleaned']}}</span>
+
+                    <a class="speaker">
+                        {% if row['speaker_party'] %}
+                            {{row['speaker_cleaned']}}
+                        {% else %}
+                            {{row.speaker}}
+                        {% endif %}
+                    </a>
                     {% if row['type'] == 'chair' %}
                     👩‍⚖️
                     {% endif %}
