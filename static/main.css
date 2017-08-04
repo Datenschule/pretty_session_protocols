@@ -86,3 +86,8 @@ h2 {
 body {
     background-color: #f6f6f6;
 }
+
+img.emoji{
+    height: 1.3em;
+    width: 1.3em;
+}
