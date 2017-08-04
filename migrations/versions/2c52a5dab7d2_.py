@@ -30,8 +30,6 @@ def upgrade():
     sa.Column('text', sa.String(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
-    op.drop_table('topics')
-
 
 def downgrade():
     op.drop_table('de_bundestag_plpr')
