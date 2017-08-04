@@ -4,7 +4,7 @@ import os
 from flask import render_template, request
 
 from app import app
-from models import Utterance
+from models import Utterance, Top
 
 
 def get_mdbs():
@@ -26,7 +26,7 @@ def protocol(session):
 
 @app.route("/session/")
 def protocol_overview():
-    sessions = Utterance.get_sessions()
+    sessions = Top.get_all()
     return render_template('protocol_overview.html', sessions=sessions)
 
 

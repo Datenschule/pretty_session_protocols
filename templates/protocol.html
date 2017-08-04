@@ -11,7 +11,7 @@
         {% for row in data %}
             {% if row.top|string() != vars.last_top|string() %}
                {% if vars.update({'last_top': row.top}) %} {% endif %}
-                <h2 id="top-{{ row.top }}">{{row.top}}</h2>
+                <h2 id="top-{{ row.top.title }}">{{row.top.title}}</h2>
             {% endif %}
 
         {% if row['type'] in ['speech', 'chair'] %}
