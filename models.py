@@ -18,8 +18,8 @@ class Utterance(db.Model):
     speaker_fp = db.Column(db.String)
     type = db.Column(db.String)
     text = db.Column(db.String)
-    top_id = db.Column(db.Integer, ForeignKey("tops.id"))
-    top = relationship("Top")
+    top_id = db.Column(db.Integer)
+    #top = relationship("Top")
     agw_url = None
 
     @staticmethod
@@ -41,6 +41,13 @@ class Top(db.Model):
     wahlperiode = db.Column(db.Integer)
     sitzung = db.Column(db.Integer)
     title = db.Column(db.String)
+    title_clean = db.Column(db.String)
+    description = db.Column(db.String)
+    number = db.Column(db.String)
+    week = db.Column(db.Integer)
+    detail = db.Column(db.String)
+    year = db.Column(db.Integer)
+    category = db.Column(db.String)
 
     @staticmethod
     def get_all():
