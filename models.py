@@ -16,6 +16,7 @@ class Utterance(db.Model):
     speaker_party = db.Column(db.String)
     speaker = db.Column(db.String)
     speaker_fp = db.Column(db.String)
+    speaker_id = db.Column(db.String)
     type = db.Column(db.String)
     text = db.Column(db.String)
     top_id = db.Column(db.Integer)
@@ -32,6 +33,30 @@ class Utterance(db.Model):
 
     def __repr__(self):
         return '<Utterance {}-{}-{}>'.format(self.wahlperiode, self.sitzung, self.sequence)
+
+class MdB(db.Model):
+    __tablename__ = "mdb"
+
+    id = db.Column(db.Integer, primary_key=True)
+    profile_url = db.Column(db.String)
+    first_name = db.Column(db.String)
+    last_name = db.Column(db.String)
+    gender = db.Column(db.String)
+    birth_date = db.Column(db.Date)
+    education = db.Column(db.String)
+    picture = db.Column(db.String)
+    party = db.Column(db.String)
+    election_list = db.Column(db.String)
+    list_won = db.Column(db.String)
+    top_id = db.Column(db.Integer)
+
+    @staticmethod
+    def get_all():
+        return db.session.query(Mdb) \
+            .all()
+
+    def __repr__(self):
+        return '<MdB {}-{}-{}>'.format(self.first_name, self.last_name, self.party)
 
 
 class Top(db.Model):
