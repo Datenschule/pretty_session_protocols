@@ -21,7 +21,7 @@ class Utterance(db.Model):
     text = db.Column(db.String)
     top_id = db.Column(db.Integer)
     #top = relationship("Top")
-    agw_url = None
+    speaker_key = db.Column(db.Integer)
 
     @staticmethod
     def get_all(wahlperiode, session):
@@ -38,6 +38,7 @@ class MdB(db.Model):
     __tablename__ = "mdb"
 
     id = db.Column(db.Integer, primary_key=True)
+    agw_id = db.Column(db.String)
     profile_url = db.Column(db.String)
     first_name = db.Column(db.String)
     last_name = db.Column(db.String)
@@ -73,6 +74,9 @@ class Top(db.Model):
     detail = db.Column(db.String)
     year = db.Column(db.Integer)
     category = db.Column(db.String)
+    duration = db.Column(db.Integer)
+    held_on = db.Column(db.Date)
+
 
     @staticmethod
     def get_all():
