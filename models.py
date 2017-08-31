@@ -50,6 +50,7 @@ class MdB(db.Model):
     election_list = db.Column(db.String)
     list_won = db.Column(db.String)
     top_id = db.Column(db.Integer)
+    education_category = db.Column(db.String)
 
     @staticmethod
     def get_all():
