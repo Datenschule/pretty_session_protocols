@@ -77,6 +77,7 @@ class Top(db.Model):
     category = db.Column(db.String)
     duration = db.Column(db.Integer)
     held_on = db.Column(db.Date)
+    sequence = db.Column(db.Integer)
 
 
     @staticmethod
