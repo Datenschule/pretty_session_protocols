@@ -78,6 +78,8 @@ class Top(db.Model):
     duration = db.Column(db.Integer)
     held_on = db.Column(db.Date)
     sequence = db.Column(db.Integer)
+    name = db.Column(db.String)
+    session_identifier = db.Column(db.String)
 
 
     @staticmethod
